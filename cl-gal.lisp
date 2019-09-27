@@ -77,3 +77,12 @@ It is left open to accomodate possible future arrow styles."
   (let ((name (get-name node))
 	(options (get-options node)))
     (format nil "~a~@[~a~];" name (option-alist-to-gv-options options))))
+
+(defun edge-to-gv-edge (edge)
+  (assert (edgep edge) (edge)
+	  "The entered structure ~a is not a valid edge" edge)
+  (let* ((arrow (get-arrow edge))
+	 (targets (get-targets edge))
+	 (options (get-options edge))
+	 (format-string (concatenate 'string "~{~a ~^" arrow " ~}~@[~a~];")))
+    (format nil format-string targets (option-alist-to-gv-options options))))
