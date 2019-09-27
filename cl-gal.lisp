@@ -58,3 +58,10 @@ It is left open to accomodate possible future arrow styles."
 (defun option-alist-to-gv-options (alist)
   (let ((options (mapcar #'option-pair-to-string alist)))
     (format nil "[~{~a~^, ~}]" options)))
+
+(defun node-to-gv-node (node)
+  (assert (eq 'node (car node)) (node)
+	  "The entered structure ~a is not a valid node" node)
+  (let ((name (get-name node))
+	(options (get-options node)))
+    (format nil "~a~@[~a~];" name (option-alist-to-gv-options options))))
