@@ -72,7 +72,7 @@ It is left open to accomodate possible future arrow styles."
     (format nil "[~{~a~^, ~}]" options)))
 
 (defun node-to-gv-node (node)
-  (assert (eq 'node (car node)) (node)
+  (assert (nodep node) (node)
 	  "The entered structure ~a is not a valid node" node)
   (let ((name (get-name node))
 	(options (get-options node)))
