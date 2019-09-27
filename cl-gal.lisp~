@@ -1,0 +1,18 @@
+;;;; cl-gal.lisp
+
+(in-package #:cl-gal)
+
+(defparameter *default-writer* t)
+
+(defun -> (&rest nodes)
+  (format *default-writer* "~{~a ~^-> ~};" nodes))
+
+(defun -- (&rest nodes)
+  (format *default-writer* "~{~a ~^-- ~};" nodes))
+
+(defun <- (&rest nodes)
+  (format *default-writer* "~{~a ~^-> ~}[dir = back];" nodes))
+
+(defun node (name &key text shape)
+  ;; todo: figure out how to deal with keys in a nice way, maybe abstract it away?
+  )
