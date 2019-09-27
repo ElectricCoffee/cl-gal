@@ -47,3 +47,14 @@ It is left open to accomodate possible future arrow styles."
   "Checks if a cons is a pair"
   (and (consp pair)
        (not (consp (cdr pair)))))
+
+(defun option-pair-to-string (pair)
+  "Turns a pair of the form (foo . bar) into a string of the form foo = \"bar\""
+  (assert (pairp pair) (pair)
+	  "argument ~a is not a valid pair" pair)
+  (destructuring-bind (key . value) pair
+    (format nil "~a = ~s" (string-downcase key) value)))
+
+(defun option-alist-to-gv-options (alist)
+  (let ((options (mapcar #'option-pair-to-string alist)))
+    (format nil "[~{~a~^, ~}]" options)))
