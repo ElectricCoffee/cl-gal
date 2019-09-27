@@ -45,6 +45,16 @@ It is left open to accomodate possible future arrow styles."
   (let ((pure-alist (cdr obj)))
     (cadr (assoc :name pure-alist))))
 
+(defun get-arrow (obj)
+  "returns the :arrow field"
+  (let ((pure-alist (cdr obj)))
+    (cadr (assoc :arrow pure-alist))))
+
+(defun get-targets (obj)
+  "returns the :targets field"
+  (let ((pure-alist (cdr obj)))
+    (cdr (assoc :targets pure-alist))))
+
 (defun pairp (pair)
   "Checks if a cons is a pair"
   (and (consp pair)
