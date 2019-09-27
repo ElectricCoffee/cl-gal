@@ -37,3 +37,8 @@ It is left open to accomodate possible future arrow styles."
   (when (has-options-p obj)
     (let ((pure-alist (cdr obj)))
       (cdr (assoc :options pure-alist)))))
+
+(defun get-name (obj)
+  "returns the :name field"
+  (let ((pure-alist (cdr obj)))
+    (cadr (assoc :name pure-alist))))
