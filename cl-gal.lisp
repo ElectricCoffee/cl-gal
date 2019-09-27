@@ -22,6 +22,8 @@ i.e. an alist where the first element is a :keyword"
 (defun edge (arrow targets &rest attrs)
   "Defines an edge. :arrow indicates the arrow style used in Graphviz, either -- or ->.
 It is left open to accomodate possible future arrow styles."
+  (assert (>= (length targets) 2) (targets)
+	  "The list ~a is too short" targets)
   `(edge (:arrow ,arrow) (:targets . ,targets) (:options . ,(mk-klist attrs))))
 
 (defun edgep (edge)
