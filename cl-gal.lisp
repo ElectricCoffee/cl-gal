@@ -26,6 +26,14 @@ It is left open to accomodate possible future arrow styles."
 	  "The list ~a is too short" targets)
   `(edge (:arrow ,arrow) (:targets . ,targets) (:options . ,(mk-klist attrs))))
 
+(defun -> (targets &rest attrs)
+  "Convenience function that creates an edge with a -> type arrow"
+  (apply #'edge "->" targets attrs))
+
+(defun -- (targets &rest attrs)
+  "Convenience function that creates an edge with a -- type arrow"
+  (apply #'edge "--" targets attrs))
+
 (defun edgep (edge)
   "Checks if a list is an edge"
   (eq 'edge (car edge)))
