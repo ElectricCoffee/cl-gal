@@ -95,3 +95,9 @@ It is left open to accomodate possible future arrow styles."
 	 (options (get-options edge))
 	 (format-string (concatenate 'string "~{~a ~^" arrow " ~}~@[~a~];")))
     (format nil format-string targets (option-alist-to-gv-options options))))
+
+(defparameter *example-structure*
+  (list
+   (node "c" :title "C" :shape "rectangle")
+   (node "cpp" :title "C++" :shape "rectangle")
+   (edge "->" '("c" "cpp") :arrowhead "vee" :style "dashed")))
