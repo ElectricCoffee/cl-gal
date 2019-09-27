@@ -72,6 +72,7 @@ It is left open to accomodate possible future arrow styles."
     (format nil "[~{~a~^, ~}]" options)))
 
 (defun node-to-gv-node (node)
+  "Turns a node object into a string representing a node in graphviz"
   (assert (nodep node) (node)
 	  "The entered structure ~a is not a valid node" node)
   (let ((name (get-name node))
