@@ -95,6 +95,12 @@ It is left open to accomodate possible future arrow styles."
 	 (format-string (concatenate 'string "~{~a ~^" arrow " ~}~@[~a~];")))
     (format nil format-string targets (option-alist-to-gv-options options))))
 
+(defun dispatch-ast (item)
+  "identifies the type of list and dispatches the correct converter function"
+  (cond
+    ((nodep item) (node-to-gv-node item))
+    ((edgep item) (edge-to-gv-edge item))))
+
 (defparameter *example-structure*
   (list
    (node "c" :title "C" :shape "rectangle")
