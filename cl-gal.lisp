@@ -13,7 +13,7 @@ i.e. an alist where the first element is a :keyword"
 
 (defun node (name &rest attrs)
   "Defines a node"
-  `(node (:name ,name) (:options . ,(mk-klist attrs))))
+  `(node (:name . ,name) (:options . ,(mk-klist attrs))))
 
 (defun nodep (node)
   "Checks if a list is a node"
@@ -24,7 +24,7 @@ i.e. an alist where the first element is a :keyword"
 It is left open to accomodate possible future arrow styles."
   (assert (>= (length targets) 2) (targets)
 	  "The list ~a is too short" targets)
-  `(edge (:arrow ,arrow) (:targets . ,targets) (:options . ,(mk-klist attrs))))
+  `(edge (:arrow . ,arrow) (:targets . ,targets) (:options . ,(mk-klist attrs))))
 
 (defun -> (targets &rest attrs)
   "Convenience function that creates an edge with a -> type arrow"
