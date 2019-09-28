@@ -101,8 +101,17 @@ It is left open to accomodate possible future arrow styles."
     ((nodep item) (node-to-gv-node item))
     ((edgep item) (edge-to-gv-edge item))))
 
+(defparameter *example-node-1*
+  (node "c" :title "C" :shape "rectangle"))
+
+(defparameter *example-node-2*
+  (node "cpp" :title "C++" :shape "rectangle"))
+
+(defparameter *example-edge*
+  (edge "->" '("c" "cpp") :arrowhead "vee" :style "dashed"))
+
 (defparameter *example-structure*
   (list
-   (node "c" :title "C" :shape "rectangle")
-   (node "cpp" :title "C++" :shape "rectangle")
-   (edge "->" '("c" "cpp") :arrowhead "vee" :style "dashed")))
+   *example-node-1*
+   *example-node-2*
+   *example-edge*))
