@@ -42,26 +42,25 @@ It is left open to accomodate possible future arrow styles."
   "checks if obj is of any type that supports the :options keyword"
   (or (nodep obj) (edgep obj)))
 
+(defun get-field (key obj)
+  (let ((pure-alist (cdr obj)))
+    (cdr (assoc key pure-alist))))
+
 (defun get-options (obj)
   "returns the :options alist"
-  (when (has-options-p obj)
-    (let ((pure-alist (cdr obj)))
-      (cdr (assoc :options pure-alist)))))
+  (get-field :options pure-alist))
 
 (defun get-name (obj)
   "returns the :name field"
-  (let ((pure-alist (cdr obj)))
-    (cadr (assoc :name pure-alist))))
+  (get-field :name pure-alist))
 
 (defun get-arrow (obj)
   "returns the :arrow field"
-  (let ((pure-alist (cdr obj)))
-    (cadr (assoc :arrow pure-alist))))
+  (get-field :arrow pure-alist))
 
 (defun get-targets (obj)
   "returns the :targets field"
-  (let ((pure-alist (cdr obj)))
-    (cdr (assoc :targets pure-alist))))
+  (get-field :targets pure-alist))
 
 (defun pairp (pair)
   "Checks if a cons is a pair"
