@@ -39,6 +39,13 @@ It is left open to accomodate possible future arrow styles."
   "Checks if a list is an edge"
   (eq 'edge (car edge)))
 
+(defun graph (type name &rest body)
+  "Constructs a graph"
+  `(graph (:type . ,type) (:name . ,name) (:body . ,body)))
+
+(defun graphp (graph)
+  (eq 'graph (car graph)))
+
 (defun has-options-p (obj)
   "checks if obj is of any type that supports the :options keyword"
   (or (nodep obj) (edgep obj)))
@@ -63,6 +70,14 @@ It is left open to accomodate possible future arrow styles."
 (defun get-targets (obj)
   "returns the :targets field"
   (get-field :targets obj))
+
+(defun get-body (obj)
+  "returns the :body field"
+  (get-field :body obj))
+
+(defun get-type (obj)
+  "returns the :type field"
+  (get-field :type obj))
 
 (defun pairp (pair)
   "Checks if a cons is a pair"
