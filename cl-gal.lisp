@@ -1,4 +1,5 @@
 ;;;; cl-gal.lisp
+;;; This project aims to create an abstract syntax tree which can then later be compiled into valid Graphviz dot code
 
 (in-package #:cl-gal)
 
@@ -43,6 +44,7 @@ It is left open to accomodate possible future arrow styles."
   (or (nodep obj) (edgep obj)))
 
 (defun get-field (key obj)
+  "Gets a field from within a structure"
   (let ((pure-alist (cdr obj)))
     (cdr (assoc key pure-alist))))
 
@@ -70,7 +72,7 @@ It is left open to accomodate possible future arrow styles."
 (defun option-pair-to-string (pair)
   "Turns a pair of the form (foo . bar) into a string of the form foo = \"bar\""
   (assert (pairp pair) (pair)
-	  "argument ~a is not a valid pair" pair)
+	  "Argument ~a is not a valid pair" pair)
   (destructuring-bind (key . value) pair
     (format nil "~a = ~s" (string-downcase key) value)))
 
