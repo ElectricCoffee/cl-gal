@@ -16,6 +16,9 @@ i.e. an alist where the first element is a :keyword"
   "Defines a node"
   `(node (:name . ,name) (:options . ,(mk-klist attrs))))
 
+(defun node-options (&rest attrs)
+  (apply #'node "node" attrs))
+
 (defun nodep (node)
   "Checks if a list is a node"
   (eq 'node (car node)))
@@ -34,6 +37,10 @@ It is left open to accomodate possible future arrow styles."
 (defun -- (targets &rest attrs)
   "Convenience function that creates an edge with a -- type arrow"
   (apply #'edge "--" targets attrs))
+
+(defun edge-options (&rest attrs)
+  ;; yes this has to be a #'node, due to how it's rendered
+  (apply #'node "edge" attrs))
 
 (defun edgep (edge)
   "Checks if a list is an edge"
