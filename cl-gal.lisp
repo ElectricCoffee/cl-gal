@@ -134,10 +134,10 @@ It is left open to accomodate possible future arrow styles."
   (node "cpp" :title "C++" :shape "rectangle"))
 
 (defparameter *example-edge*
-  (edge "->" '("c" "cpp") :arrowhead "vee" :style "dashed"))
+  (-> '("c" "cpp") :arrowhead "vee" :style "dashed"))
 
 (defparameter *example-structure*
-  (list
-   *example-node-1*
-   *example-node-2*
-   *example-edge*))
+  (graph "digraph" "g"
+	 *example-node-1*
+	 *example-node-2*
+	 *example-edge*))
