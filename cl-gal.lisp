@@ -112,11 +112,20 @@ It is left open to accomodate possible future arrow styles."
 	 (format-string (concatenate 'string "~{~a ~^" arrow " ~}~@[~a~];")))
     (format nil format-string targets (option-alist-to-gv-options options))))
 
+(defun graph-to-gv-graph (graph)
+  (assert (graphp graph) (graph)
+	  "The entered structure ~a is not a valid graph" graph)
+  (let ((type (get-type graph))
+	(name (get-name graph))
+	(components (mapcar #'dispatch-ast (get-body graph))))
+    (format nil "~a ~a {~%~{    ~a~%~}}" type name components)))
+
 (defun dispatch-ast (item)
   "identifies the type of list and dispatches the correct converter function"
   (cond
     ((nodep item) (node-to-gv-node item))
-    ((edgep item) (edge-to-gv-edge item))))
+    ((edgep item) (edge-to-gv-edge item))
+    ((graphp item) (graph-to-gv-graph item))))
 
 (defparameter *example-node-1*
   (node "c" :title "C" :shape "rectangle"))
