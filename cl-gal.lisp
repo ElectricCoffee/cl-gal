@@ -48,19 +48,19 @@ It is left open to accomodate possible future arrow styles."
 
 (defun get-options (obj)
   "returns the :options alist"
-  (get-field :options pure-alist))
+  (get-field :options obj))
 
 (defun get-name (obj)
   "returns the :name field"
-  (get-field :name pure-alist))
+  (get-field :name obj))
 
 (defun get-arrow (obj)
   "returns the :arrow field"
-  (get-field :arrow pure-alist))
+  (get-field :arrow obj))
 
 (defun get-targets (obj)
   "returns the :targets field"
-  (get-field :targets pure-alist))
+  (get-field :targets obj))
 
 (defun pairp (pair)
   "Checks if a cons is a pair"
